@@ -51,3 +51,33 @@ def enumerate_all_paths(graph: Iterable[Iterable[int]]) -> List[List[int]]:
 DETAILED_EXPLANATION = """
 DAG에서 모든 경로를 찾으려면 현재까지 지나온 노드를 기억하면서 깊이 우선 탐색을 수행하면 된다. 각 노드에서 나갈 수 있는 이웃을 순서대로 방문하고, 목적지에 도달하면 지금까지 저장된 경로를 결과에 추가한다. 탐색을 마친 뒤에는 되돌아가면서 마지막에 추가한 노드를 제거해 다른 경로를 찾는다. 사이클이 없는 그래프이므로 방문 배열이 필요 없고, 경로를 그대로 따라가며 전부 나열할 수 있다.
 """
+
+
+
+def solve() -> None:
+    """DAG 입력을 받아 0에서 N-1까지의 모든 경로를 출력한다."""
+
+    import sys
+
+    input = sys.stdin.readline
+
+    first_line = input().strip()
+    if not first_line:
+        return
+
+    n = int(first_line)
+    graph = []
+    for _ in range(n):
+        line = input().rstrip("\n")
+        if line.strip():
+            graph.append([int(x) for x in line.split()])
+        else:
+            graph.append([])
+
+    paths = enumerate_all_paths(graph)
+    output_lines = [" ".join(map(str, path)) for path in paths]
+    sys.stdout.write("\n".join(output_lines))
+
+
+if __name__ == "__main__":
+    solve()

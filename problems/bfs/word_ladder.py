@@ -67,3 +67,34 @@ def word_ladder_length(begin: str, end: str, word_list: Iterable[str]) -> int:
 DETAILED_EXPLANATION = """
 단어 변환 문제는 각 단어를 노드로 보고, 한 글자만 다른 단어끼리 간선을 잇는 그래프를 떠올리면 풀 수 있다. 간선 비용이 모두 1이므로 BFS를 사용하면 가장 적은 단계로 목표 단어에 도달할 수 있다. 현재 단어에서 한 글자씩 바꾸어 가능한 모든 다음 단어를 생성하고, 아직 방문하지 않았다면 큐에 넣는다. 목표 단어를 처음 만났을 때의 단계 수가 곧 정답이다. 이렇게 그래프 모델을 세우고 너비 우선 탐색을 적용하는 사고 과정이 핵심이다.
 """
+
+
+
+def solve() -> None:
+    """단어 변환 문제 입력을 받아 최소 단계를 출력한다."""
+
+    import sys
+
+    input = sys.stdin.readline
+
+    first_line = input().strip()
+    if not first_line:
+        return
+
+    begin, end = first_line.split()
+    count_line = input().strip()
+    while count_line == "":
+        count_line = input().strip()
+    n = int(count_line)
+    words = []
+    for _ in range(n):
+        word = input().strip()
+        while word == "":
+            word = input().strip()
+        words.append(word)
+
+    print(word_ladder_length(begin, end, words))
+
+
+if __name__ == "__main__":
+    solve()

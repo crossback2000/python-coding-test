@@ -87,3 +87,30 @@ def shortest_path_in_maze(board: Iterable[str]) -> int:
 DETAILED_EXPLANATION = """
 문제를 풀 때는 우선 격자를 그래프로 바라본다. 각 칸은 정점이 되고, 상하좌우로 이동 가능한 칸 사이에 간선이 있다고 생각하면 된다. 모든 간선의 가중치가 1이므로 최단 거리를 구할 때는 BFS가 가장 적합하다. 시작 위치에서부터 큐에 넣어 한 칸씩 넓혀 가며 이동하면, 어떤 칸을 처음 방문할 때 이미 최단 경로가 결정된다. 특히 목적지를 최초로 꺼내는 순간의 거리는 항상 최단 거리이므로 그 값을 곧바로 반환하면 된다. 이렇게 그래프 관점으로 사고하면 왜 BFS가 답이 되는지 자연스럽게 이해할 수 있다.
 """
+
+
+
+def solve() -> None:
+    """미로 입력을 받아 최단 이동 칸 수를 출력한다."""
+
+    import sys
+
+    input = sys.stdin.readline
+
+    first_line = input().strip()
+    if not first_line:
+        return
+
+    n, m = map(int, first_line.split())
+    board = []
+    for _ in range(n):
+        line = input().strip()
+        while line == "":
+            line = input().strip()
+        board.append(line)
+
+    print(shortest_path_in_maze(board))
+
+
+if __name__ == "__main__":
+    solve()

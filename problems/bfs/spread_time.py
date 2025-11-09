@@ -55,3 +55,37 @@ def spread_time(graph: Graph, start: int) -> int:
 DETAILED_EXPLANATION = """
 메시지를 전파하는 상황은 그래프에서 최단 거리를 구하는 문제로 바꿀 수 있다. 시작 노드에서 BFS를 돌리면 각 노드에 도달하는 최소 시간이 계산된다. 모든 노드가 방문되었다면 그중 가장 큰 값이 전체 전파에 걸린 시간이 된다. 만약 방문하지 못한 노드가 있다면 연결되지 않은 노드가 있다는 뜻이므로 -1을 반환한다. BFS를 이용한 거리 계산 패턴을 네트워크 문제에 적용한 예시다.
 """
+
+
+
+def solve() -> None:
+    """그래프 입력을 받아 메시지 전파 시간을 출력한다."""
+
+    import sys
+
+    input = sys.stdin.readline
+
+    first_line = input().strip()
+    if not first_line:
+        return
+
+    n, m = map(int, first_line.split())
+    graph: Graph = {i: [] for i in range(n)}
+    for _ in range(m):
+        line = input().strip()
+        while line == "":
+            line = input().strip()
+        u, v = map(int, line.split())
+        graph[u].append(v)
+        graph[v].append(u)
+
+    start_line = input().strip()
+    while start_line == "":
+        start_line = input().strip()
+    start = int(start_line)
+
+    print(spread_time(graph, start))
+
+
+if __name__ == "__main__":
+    solve()

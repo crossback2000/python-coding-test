@@ -65,3 +65,34 @@ def max_region_area(grid: Iterable[Iterable[int]]) -> int:
 DETAILED_EXPLANATION = """
 영역의 크기를 구하는 방법은 연결 요소의 개수를 세는 방식과 거의 동일하다. 색칠된 칸을 발견하면 DFS로 연결된 모든 칸을 방문하면서 카운트를 누적한다. 탐색이 끝났을 때 얻은 크기와 현재까지의 최대 크기를 비교하여 갱신하면 된다. 문제를 해결하기 위해서는 DFS가 연결된 공간을 한 번에 탐색한다는 사실을 이해하고, 방문 처리를 통해 중복 탐색을 피하는 전략을 떠올리면 된다.
 """
+
+
+
+def solve() -> None:
+    """격자 정보를 입력받아 가장 큰 영역의 크기를 출력한다."""
+
+    import sys
+
+    input = sys.stdin.readline
+
+    first_line = input().strip()
+    if not first_line:
+        return
+
+    n, m = map(int, first_line.split())
+    grid = []
+    for _ in range(n):
+        line = input().strip()
+        while line == "":
+            line = input().strip()
+        if " " in line:
+            row = [int(x) for x in line.split()]
+        else:
+            row = [int(ch) for ch in line]
+        grid.append(row)
+
+    print(max_region_area(grid))
+
+
+if __name__ == "__main__":
+    solve()

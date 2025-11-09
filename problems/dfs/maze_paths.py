@@ -62,3 +62,34 @@ def count_maze_paths(maze: Iterable[Iterable[int]]) -> int:
 DETAILED_EXPLANATION = """
 이 문제는 모든 가능한 경로를 세어야 하므로 DFS 백트래킹이 적합하다. 현재 위치를 방문 처리한 뒤 상하좌우로 이동해 나머지 경로를 탐색하고, 탐색이 끝나면 방문 표시를 되돌린다. 목적지에 도착하면 1을 반환해 경로 하나를 센다. 이렇게 재귀 호출이 경로의 선택과 되돌림을 반복하면서 전체 경우의 수를 누적하게 된다. DFS가 가능한 모든 경로를 나열한다는 점을 이용한 전형적인 접근이다.
 """
+
+
+
+def solve() -> None:
+    """미로 정보를 입력받아 가능한 경로 수를 출력한다."""
+
+    import sys
+
+    input = sys.stdin.readline
+
+    first_line = input().strip()
+    if not first_line:
+        return
+
+    n, m = map(int, first_line.split())
+    maze = []
+    for _ in range(n):
+        line = input().strip()
+        while line == "":
+            line = input().strip()
+        if " " in line:
+            row = [int(x) for x in line.split()]
+        else:
+            row = [int(ch) for ch in line]
+        maze.append(row)
+
+    print(count_maze_paths(maze))
+
+
+if __name__ == "__main__":
+    solve()

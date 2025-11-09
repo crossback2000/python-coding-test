@@ -61,3 +61,21 @@ def restore_ip_addresses(s: str) -> List[str]:
 DETAILED_EXPLANATION = """
 문자열을 네 부분으로 나누는 모든 경우를 시도해야 하므로 DFS 백트래킹을 활용한다. 재귀 함수는 현재까지 만든 조각 수와 다음에 탐색할 시작 위치를 기억한다. 길이 1~3을 시도하면서 조건에 맞는 조각만 선택하고, 네 개의 조각을 만들었을 때 문자열을 모두 사용했다면 정답 리스트에 추가한다. 선택을 되돌리며 모든 가능성을 탐색하는 전형적인 백트래킹 접근법이다.
 """
+
+
+
+def solve() -> None:
+    """문자열을 입력받아 가능한 IP 주소를 출력한다."""
+
+    import sys
+
+    s = sys.stdin.readline().strip()
+    if not s:
+        return
+
+    addresses = restore_ip_addresses(s)
+    sys.stdout.write("\n".join(addresses))
+
+
+if __name__ == "__main__":
+    solve()

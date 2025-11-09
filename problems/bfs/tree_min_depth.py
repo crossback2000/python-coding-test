@@ -67,3 +67,39 @@ def minimum_depth(root: Optional[TreeNode]) -> int:
 DETAILED_EXPLANATION = """
 이진 트리의 최소 깊이는 루트에서 가장 가까운 리프까지의 거리다. 모든 간선의 비용이 1이므로, 루트부터 너비 우선 탐색을 진행하면 레벨별로 노드를 방문하게 된다. 따라서 BFS 중 가장 먼저 만나는 리프 노드가 곧 최소 깊이를 가진다. 문제를 트리를 그래프로 바라보고, 리프를 만나는 순간 탐색을 종료한다는 전략을 세우면 자연스럽게 풀이가 완성된다.
 """
+
+
+
+def solve() -> None:
+    """이진 트리 입력을 받아 최소 깊이를 출력한다."""
+
+    import sys
+
+    input = sys.stdin.readline
+
+    line = input().strip()
+    if not line:
+        return
+
+    n = int(line)
+    nodes = []
+    children = []
+    for _ in range(n):
+        node_line = input().strip()
+        while node_line == "":
+            node_line = input().strip()
+        value, left, right = map(int, node_line.split())
+        nodes.append(TreeNode(value))
+        children.append((left, right))
+
+    for index, (left, right) in enumerate(children):
+        if left != -1:
+            nodes[index].left = nodes[left]
+        if right != -1:
+            nodes[index].right = nodes[right]
+
+    print(minimum_depth(nodes[0] if nodes else None))
+
+
+if __name__ == "__main__":
+    solve()

@@ -54,3 +54,30 @@ def generate_combinations(nums: Iterable[int], k: int) -> List[List[int]]:
 DETAILED_EXPLANATION = """
 조합은 순서를 고려하지 않으므로, DFS를 진행할 때 다음에 탐색할 시작 위치를 함께 넘겨주면 중복을 피할 수 있다. 현재까지 선택한 원소가 K개가 되면 하나의 조합이 완성되므로 결과에 추가한다. 탐색이 끝나면 마지막으로 선택한 원소를 제거하여 다른 경우를 시도한다. 이런 방식으로 선택-되돌리기를 반복하면 모든 조합을 빠짐없이 생성할 수 있다.
 """
+
+
+
+def solve() -> None:
+    """정수 배열과 K를 입력받아 가능한 조합을 출력한다."""
+
+    import sys
+
+    input = sys.stdin.readline
+
+    first_line = input().strip()
+    if not first_line:
+        return
+
+    n, k = map(int, first_line.split())
+    nums_line = input().strip()
+    while nums_line == "":
+        nums_line = input().strip()
+    numbers = list(map(int, nums_line.split()))
+
+    combinations = generate_combinations(numbers, k)
+    output_lines = [" ".join(map(str, combo)) for combo in combinations]
+    sys.stdout.write("\n".join(output_lines))
+
+
+if __name__ == "__main__":
+    solve()

@@ -66,3 +66,31 @@ def count_islands(grid: Iterable[str]) -> int:
 DETAILED_EXPLANATION = """
 격자에서 연결된 영역의 개수를 구하는 전형적인 DFS 문제다. 전체 격자를 순회하다가 땅(1)을 만나면 그 칸을 시작으로 DFS를 실행해 연결된 땅을 모두 방문 처리한다. 이렇게 하면 하나의 DFS 호출이 정확히 하나의 섬을 담당하게 된다. 방문한 칸은 다시 0으로 바꾸어 중복 탐색을 피하고, 새로운 땅을 찾을 때마다 섬 개수를 증가시키면 된다. 문제를 연결 요소 찾기로 바꾸어 생각하면 자연스럽게 풀이가 떠오른다.
 """
+
+
+
+def solve() -> None:
+    """격자 지도를 입력받아 섬의 개수를 출력한다."""
+
+    import sys
+
+    input = sys.stdin.readline
+
+    first_line = input().strip()
+    if not first_line:
+        return
+
+    n, m = map(int, first_line.split())
+    grid = []
+    for _ in range(n):
+        line = input().strip()
+        while line == "":
+            line = input().strip()
+        row = "".join(line.split())
+        grid.append(row)
+
+    print(count_islands(grid))
+
+
+if __name__ == "__main__":
+    solve()

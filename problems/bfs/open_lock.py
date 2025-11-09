@@ -69,3 +69,34 @@ def minimum_turns_to_unlock(deadends: Iterable[str], target: str) -> int:
 DETAILED_EXPLANATION = """
 자물쇠의 가능한 모든 상태를 노드로 보고, 한 번의 회전으로 바뀌는 상태를 간선으로 생각하면 그래프 문제가 된다. 각 간선의 비용이 1이므로 BFS를 사용하면 최소 회전 횟수를 보장할 수 있다. 시작 상태를 큐에 넣고 한 자리씩 +1, -1을 적용하여 새 상태를 생성한다. 금지 상태나 이미 방문한 상태는 건너뛰고, 목표 상태를 처음 만났을 때의 회전 횟수를 반환한다. 그래프 모델링과 BFS 적용이라는 두 가지 아이디어가 핵심이다.
 """
+
+
+
+def solve() -> None:
+    """자물쇠 문제 입력을 받아 최소 회전 횟수를 출력한다."""
+
+    import sys
+
+    input = sys.stdin.readline
+
+    first_line = input().strip()
+    if not first_line:
+        return
+
+    n = int(first_line)
+    deadends = []
+    for _ in range(n):
+        state = input().strip()
+        while state == "":
+            state = input().strip()
+        deadends.append(state)
+
+    target = input().strip()
+    while target == "":
+        target = input().strip()
+
+    print(minimum_turns_to_unlock(deadends, target))
+
+
+if __name__ == "__main__":
+    solve()

@@ -77,3 +77,35 @@ def exist_word(board: Iterable[Iterable[str]], word: str) -> bool:
 DETAILED_EXPLANATION = """
 단어 찾기 문제는 DFS 백트래킹의 대표적인 예시다. 각 칸을 시작점으로 삼고, 단어의 첫 글자가 일치하면 인접한 칸으로 이동하며 다음 글자를 찾는다. 한 경로에서 같은 칸을 두 번 사용할 수 없으므로, 방문한 칸을 임시로 다른 문자로 바꿔 중복 사용을 막는다. 만약 끝까지 도달하면 성공이고, 실패하면 방문 표시를 되돌린다. 이렇게 경로를 하나씩 시도하며 정답을 찾는 과정을 통해 DFS 백트래킹의 흐름을 이해할 수 있다.
 """
+
+
+
+def solve() -> None:
+    """보드와 단어를 입력받아 존재 여부를 출력한다."""
+
+    import sys
+
+    input = sys.stdin.readline
+
+    first_line = input().strip()
+    if not first_line:
+        return
+
+    n, m = map(int, first_line.split())
+    board = []
+    for _ in range(n):
+        line = input().strip()
+        while line == "":
+            line = input().strip()
+        board.append(list(line))
+
+    word = input().strip()
+    while word == "":
+        word = input().strip()
+
+    result = exist_word(board, word)
+    print("YES" if result else "NO")
+
+
+if __name__ == "__main__":
+    solve()

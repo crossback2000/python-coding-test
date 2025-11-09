@@ -51,3 +51,32 @@ def count_target_sum(nums: Iterable[int], target: int) -> int:
 DETAILED_EXPLANATION = """
 각 숫자에 대해 + 또는 - 중 하나를 선택해야 하므로, 깊이 우선 탐색으로 모든 선택을 나열하면 경우의 수를 셀 수 있다. 재귀 함수는 현재 인덱스와 누적 합을 인자로 받고, 모든 숫자를 사용했을 때 누적 합이 목표와 같으면 정답을 하나 증가시킨다. 선택을 확장할 때는 +를 붙인 경우와 -를 붙인 경우를 각각 재귀 호출로 분기하면 된다. 이렇게 선택지를 트리 형태로 확장하는 사고방식이 DFS의 기본이다.
 """
+
+
+
+def solve() -> None:
+    """정수 배열과 목표 값을 받아 경우의 수를 출력한다."""
+
+    import sys
+
+    input = sys.stdin.readline
+
+    line = input().strip()
+    if not line:
+        return
+
+    n = int(line)
+    nums_line = input().strip()
+    while nums_line == "":
+        nums_line = input().strip()
+    numbers = list(map(int, nums_line.split()))
+    target_line = input().strip()
+    while target_line == "":
+        target_line = input().strip()
+    target = int(target_line)
+
+    print(count_target_sum(numbers, target))
+
+
+if __name__ == "__main__":
+    solve()

@@ -83,3 +83,35 @@ def time_to_rot_all(grid: Iterable[Iterable[int]]) -> int:
 DETAILED_EXPLANATION = """
 동시에 여러 지점에서 확산하는 문제는 다중 시작점 BFS로 접근한다. 모든 익은 토마토를 큐에 넣고 하루 단위로 확산을 반복하면, 큐에 남아 있는 칸들은 같은 날짜에 익게 된다. 한 레벨의 탐색이 끝날 때마다 하루를 증가시키고, 새로운 칸이 익을 때마다 미방문 토마토 수를 감소시킨다. 탐색 종료 후 미방문 토마토가 없으면 걸린 날짜가 답이고, 남아 있다면 전부 익히지 못한 것이므로 -1을 출력한다. 이러한 사고 과정을 통해 다중 시작점을 처리하는 BFS 패턴을 익힐 수 있다.
 """
+
+
+
+def solve() -> None:
+    """토마토 상자 상태를 입력받아 모두 익는 시간을 출력한다."""
+
+    import sys
+
+    input = sys.stdin.readline
+
+    first_line = input().strip()
+    if not first_line:
+        return
+
+    m, n = map(int, first_line.split())
+    grid = []
+    for _ in range(n):
+        line = input().strip()
+        while line == "":
+            line = input().strip()
+        parts = line.split()
+        if len(parts) == m:
+            row = [int(x) for x in parts]
+        else:
+            row = [int(ch) for ch in line]
+        grid.append(row)
+
+    print(time_to_rot_all(grid))
+
+
+if __name__ == "__main__":
+    solve()

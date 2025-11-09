@@ -62,3 +62,30 @@ def generate_permutations(nums: Iterable[int]) -> List[List[int]]:
 DETAILED_EXPLANATION = """
 순열 문제는 한 자리에 올 수 있는 숫자를 하나씩 선택하면서 깊이를 내려가는 백트래킹 패턴으로 해결한다. 사용 여부를 배열로 관리하고, 숫자를 선택할 때마다 방문 표시를 해 중복 선택을 막는다. 모든 자리를 채우면 현재까지 만든 수열을 결과에 추가하고, 재귀가 끝나면 마지막 선택을 취소하여 다른 경우를 탐색한다. 이렇게 선택-되돌리기를 반복하는 사고 방식이 DFS 백트래킹의 핵심이다.
 """
+
+
+
+def solve() -> None:
+    """수열을 입력받아 가능한 모든 순열을 출력한다."""
+
+    import sys
+
+    input = sys.stdin.readline
+
+    line = input().strip()
+    if not line:
+        return
+
+    n = int(line)
+    nums_line = input().strip()
+    while nums_line == "":
+        nums_line = input().strip()
+    numbers = list(map(int, nums_line.split()))
+
+    permutations = generate_permutations(numbers)
+    output_lines = [" ".join(map(str, perm)) for perm in permutations]
+    sys.stdout.write("\n".join(output_lines))
+
+
+if __name__ == "__main__":
+    solve()

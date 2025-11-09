@@ -70,3 +70,36 @@ def nearest_zero_distance(matrix: Iterable[Iterable[int]]) -> List[List[int]]:
 DETAILED_EXPLANATION = """
 가장 가까운 0을 찾는 문제는 다중 시작점 BFS로 쉽게 해결된다. 모든 0을 동시에 큐에 넣고 거리 0으로 시작하면, BFS가 퍼져 나가면서 각 칸을 처음 방문할 때의 깊이가 가장 가까운 0까지의 거리다. 이미 방문한 칸은 더 짧은 경로가 존재할 수 없으므로 다시 방문할 필요가 없다. 이렇게 여러 출발점을 한 번에 다루는 BFS 패턴을 이해하는 것이 문제 해결의 핵심이다.
 """
+
+
+
+def solve() -> None:
+    """표준 입력으로 행렬을 받아 각 칸의 0까지 거리를 출력한다."""
+
+    import sys
+
+    input = sys.stdin.readline
+
+    first_line = input().strip()
+    if not first_line:
+        return
+
+    n, m = map(int, first_line.split())
+    matrix = []
+    for _ in range(n):
+        line = input().strip()
+        while line == "":
+            line = input().strip()
+        if " " in line:
+            row = [int(x) for x in line.split()]
+        else:
+            row = [int(ch) for ch in line]
+        matrix.append(row)
+
+    distances = nearest_zero_distance(matrix)
+    output = "\n".join(" ".join(map(str, row)) for row in distances)
+    sys.stdout.write(output)
+
+
+if __name__ == "__main__":
+    solve()

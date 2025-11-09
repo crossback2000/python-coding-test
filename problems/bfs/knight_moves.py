@@ -86,3 +86,32 @@ def minimum_knight_moves(n: int, start: Tuple[int, int], goal: Tuple[int, int]) 
 DETAILED_EXPLANATION = """
 나이트 이동 문제는 각 칸을 노드로, 나이트가 한 번에 갈 수 있는 칸을 간선으로 생각하면 된다. 모든 간선이 동일한 비용을 가지므로 최단 거리 탐색에는 BFS가 적합하다. 큐에 시작 칸을 넣고 한 단계씩 확장하면서 이동 횟수를 기록하면, 특정 칸을 처음 방문할 때의 값이 항상 최소 이동 수이다. 목표 칸에 도달하면 그 값이 곧 정답이다. 이렇게 그래프로 추상화하고 BFS의 특성을 떠올리면 해결 전략을 쉽게 떠올릴 수 있다.
 """
+
+
+
+def solve() -> None:
+    """표준 입력을 받아 나이트 최소 이동 횟수를 출력한다."""
+
+    import sys
+
+    input = sys.stdin.readline
+
+    line = input().strip()
+    if not line:
+        return
+
+    n = int(line)
+    start_line = input().strip()
+    while start_line == "":
+        start_line = input().strip()
+    goal_line = input().strip()
+    while goal_line == "":
+        goal_line = input().strip()
+    start = tuple(map(int, start_line.split()))
+    goal = tuple(map(int, goal_line.split()))
+
+    print(minimum_knight_moves(n, start, goal))
+
+
+if __name__ == "__main__":
+    solve()

@@ -69,3 +69,41 @@ def level_order_values(root: Optional[TreeNode]) -> List[List[int]]:
 DETAILED_EXPLANATION = """
 이 문제는 트리를 레벨별로 순회하는 전형적인 BFS 패턴이다. 큐에 루트 노드를 넣고, 현재 큐 크기만큼 노드를 꺼내며 같은 레벨을 묶어 저장한다. 자식 노드는 다음 레벨을 위해 큐에 추가한다. 이렇게 반복하면 레벨 순서가 자연스럽게 유지되고, 각 레벨의 값을 차례대로 기록할 수 있다. BFS가 레벨 단위 탐색에 적합하다는 사실을 기억하면 쉽게 접근할 수 있다.
 """
+
+
+
+def solve() -> None:
+    """표준 입력으로 이진 트리를 받아 레벨 순회 결과를 출력한다."""
+
+    import sys
+
+    input = sys.stdin.readline
+
+    line = input().strip()
+    if not line:
+        return
+
+    n = int(line)
+    nodes = []
+    children = []
+    for _ in range(n):
+        node_line = input().strip()
+        while node_line == "":
+            node_line = input().strip()
+        value, left, right = map(int, node_line.split())
+        nodes.append(TreeNode(value))
+        children.append((left, right))
+
+    for index, (left, right) in enumerate(children):
+        if left != -1:
+            nodes[index].left = nodes[left]
+        if right != -1:
+            nodes[index].right = nodes[right]
+
+    levels = level_order_values(nodes[0] if nodes else None)
+    output_lines = [" ".join(map(str, level)) for level in levels]
+    sys.stdout.write("\n".join(output_lines))
+
+
+if __name__ == "__main__":
+    solve()
