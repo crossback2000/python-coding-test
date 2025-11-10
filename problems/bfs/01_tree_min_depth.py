@@ -25,17 +25,23 @@
 """
 
 from collections import deque
-from dataclasses import dataclass
 from typing import Deque, Optional, Tuple
 
 
-@dataclass
 class TreeNode:
     """이진 트리 노드를 표현하는 자료구조."""
 
-    value: int
-    left: Optional["TreeNode"] = None
-    right: Optional["TreeNode"] = None
+    __slots__ = ("value", "left", "right")
+
+    def __init__(
+        self,
+        value: int,
+        left: Optional["TreeNode"] = None,
+        right: Optional["TreeNode"] = None,
+    ) -> None:
+        self.value = value
+        self.left = left
+        self.right = right
 
 
 def minimum_depth(root: Optional[TreeNode]) -> int:
