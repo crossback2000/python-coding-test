@@ -27,17 +27,23 @@
 DFS로 루트에서 리프까지 내려가면서 누적 합을 전달하면 모든 경로의 합을 구할 수 있다.
 """
 
-from dataclasses import dataclass
 from typing import List, Optional
 
 
-@dataclass
 class TreeNode:
-    """이진 트리를 구성하는 노드."""
+    """이진 트리 노드를 표현하는 경량 클래스."""
 
-    value: int
-    left: Optional["TreeNode"] = None
-    right: Optional["TreeNode"] = None
+    __slots__ = ("value", "left", "right")
+
+    def __init__(
+        self,
+        value: int,
+        left: Optional["TreeNode"] = None,
+        right: Optional["TreeNode"] = None,
+    ) -> None:
+        self.value = value
+        self.left = left
+        self.right = right
 
 
 def binary_tree_path_sums(root: Optional[TreeNode]) -> List[int]:
