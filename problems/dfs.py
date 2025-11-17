@@ -1,9 +1,7 @@
-"""DFS 문제 모듈 로더.
+"""DFS 문제 모듈 로더 (단일 디렉터리 구조).
 
-난이도 순서를 명시하기 위해 파일 이름이 숫자로 시작하므로, 이 패키지에선
-``importlib``을 사용해 직접 모듈을 로드한다.
+숫자로 시작하는 파일명을 직접 import 할 수 없으므로 importlib로 로드한다.
 """
-
 from __future__ import annotations
 
 from importlib import util
