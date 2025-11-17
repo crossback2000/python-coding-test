@@ -44,6 +44,8 @@ def minimum_classrooms(intervals: List[Tuple[int, int]]) -> int:
     # 2. 진행 중인 강의들의 종료 시각을 담을 최소 힙을 준비한다.
     min_heap: List[int] = []
 
+    max_rooms = 0
+
     for start, end in intervals:
         # 3. 가장 빨리 끝나는 강의의 종료 시각이 현재 강의 시작 시각보다 작거나 같다면
         #    같은 강의실을 재사용할 수 있으므로 힙에서 제거한다.
@@ -53,8 +55,11 @@ def minimum_classrooms(intervals: List[Tuple[int, int]]) -> int:
         # 4. 현재 강의의 종료 시각을 힙에 추가한다.
         heapq.heappush(min_heap, end)
 
+        # 5. 순회 중에 동시에 필요한 최대 강의실 수를 추적한다.
+        max_rooms = max(max_rooms, len(min_heap))
+
     # 힙에 남아 있는 원소의 최대 개수가 동시에 필요한 강의실 수이다.
-    return len(min_heap)
+    return max_rooms
 
 
 DETAILED_EXPLANATION = """

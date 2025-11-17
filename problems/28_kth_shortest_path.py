@@ -46,11 +46,10 @@ def kth_shortest_paths(n: int, edges: List[Tuple[int, int, int]], start: int, k:
         # 현재 거리를 리스트에 저장한다.
         dist_list[node].append(cur_dist)
 
-        # 아직 k개 미만인 경우에만 인접 노드를 확장한다.
-        if len(dist_list[node]) < k:
-            for nxt, weight in graph[node]:
-                next_dist = cur_dist + weight
-                heapq.heappush(pq, (next_dist, nxt))
+        # 노드가 k번 미만으로 팝된 경우, 현재 경로를 기반으로 이웃을 확장한다.
+        for nxt, weight in graph[node]:
+            next_dist = cur_dist + weight
+            heapq.heappush(pq, (next_dist, nxt))
 
     # 각 노드에 대해 k번째 거리가 있으면 반환하고, 없으면 -1로 채운다.
     result = [-1] * n
