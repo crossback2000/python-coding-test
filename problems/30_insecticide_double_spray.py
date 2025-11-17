@@ -27,7 +27,7 @@ N×N 격자에 K마리의 벌레가 있다. 각 벌레는 위치 (r, c), 이동 
 이후 후보 쌍의 합집합 크기를 계산해 두 번의 살포로 제거할 수 있는 최대 수를 찾는다.
 """
 
-from typing import List, Tuple
+from typing import List, Optional, Tuple
 
 # 방향을 행/열 증가량으로 매핑한다. 동/서/남/북 순서.
 DIRECTION = {
@@ -80,7 +80,7 @@ def gather_candidates(
     bugs: List[Bug],
     size: int,
     square: int,
-    top_k: int = 4,
+    top_k: Optional[int] = None,
 ) -> List[Candidate]:
     """모든 시각에 대해 상위 구간 후보를 모아 반환한다."""
 
@@ -114,18 +114,26 @@ def gather_candidates(
                 + prefix[r][c]
             )
 
-        # 3) 가장 많은 벌레가 모인 상위 top_k 구역을 고른다.
+        # 3) 가장 많은 벌레가 모인 구역을 고른다.
         best: List[Tuple[int, int, int]] = []  # (count, r, c)
         limit = size - square + 1
-        for r in range(limit):
-            for c in range(limit):
-                cnt = area_sum(r, c)
-                if len(best) < top_k:
+        if top_k is None:
+            # 정밀 탐색: 모든 구역을 후보로 포함한다.
+            for r in range(limit):
+                for c in range(limit):
+                    cnt = area_sum(r, c)
                     best.append((cnt, r, c))
-                    best.sort(reverse=True)
-                elif cnt > best[-1][0]:
-                    best[-1] = (cnt, r, c)
-                    best.sort(reverse=True)
+        else:
+            # 후보 수를 제한해 탐색 공간을 줄인다.
+            for r in range(limit):
+                for c in range(limit):
+                    cnt = area_sum(r, c)
+                    if len(best) < top_k:
+                        best.append((cnt, r, c))
+                        best.sort(reverse=True)
+                    elif cnt > best[-1][0]:
+                        best[-1] = (cnt, r, c)
+                        best.sort(reverse=True)
 
         # 4) 각 후보 구역에 포함되는 벌레 id를 비트마스크로 만든다.
         for cnt, r, c in best:
