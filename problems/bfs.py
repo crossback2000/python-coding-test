@@ -1,11 +1,7 @@
-"""너비 우선 탐색 문제 모음.
+"""BFS 문제 모듈 로더 (단일 디렉터리 구조).
 
-문제 파일명이 난이도 순서를 나타내도록 숫자로 시작하기 때문에 일반적인
-파이썬 모듈 import 구문을 사용할 수 없다. 따라서 이 모듈에서는
-``importlib``을 이용해 파일 경로에서 직접 모듈을 로드한 뒤, 외부에 공개할
-함수와 클래스를 할당한다.
+숫자로 시작하는 파일명을 직접 import 할 수 없으므로 importlib로 로드한다.
 """
-
 from __future__ import annotations
 
 from importlib import util
