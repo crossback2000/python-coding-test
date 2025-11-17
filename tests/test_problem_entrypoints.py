@@ -4,7 +4,7 @@ We keep all problems under a single directory with numeric prefixes.
 This test guards against regressions where a file forgets to expose
 `solve()` or drops the `__main__` guard that allows direct execution:
 
-    python problems/01_tree_min_depth.py < input.txt
+    python problems/01.py < input.txt
 
 The test does *not* run each solution; it only validates the structure
 and keeps module loading lightweight.

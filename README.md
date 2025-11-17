@@ -9,7 +9,7 @@
 모든 문제 파일은 `solve()` 함수와 `if __name__ == "__main__":` 가드를 포함해 단일 파일로 바로 실행할 수 있게 정비했습니다. 아래와 같이 원하는 문제를 직접 실행하며 입출력을 확인할 수 있습니다.
 
 ```bash
-python problems/01_tree_min_depth.py < input.txt
+python problems/01.py < input.txt
 ```
 
 ## 준비 사항
@@ -23,43 +23,43 @@ pytest
 문제를 먼저 직접 해결해본 후, 같은 파일에 정리된 해설과 코드를 비교하며 학습 효율을 높여보세요.
 
 ## 추천 풀이 순서 (쉬운 문제 → 어려운 문제)
-1. `problems/00a_sum_two_numbers.py` — 입출력과 덧셈 익히기
-2. `problems/00b_max_of_three.py` — 세 수 중 최댓값 찾기
-3. `problems/00c_count_even_numbers.py` — 수열에서 짝수 세기
-4. `problems/00d_min_abs_difference.py` — 인접 원소 최소 차이
-5. `problems/00e_reverse_string.py` — 문자열 뒤집기
-6. `problems/00f_palindrome_check.py` — 팰린드롬 판별
-7. `problems/00g_count_vowels.py` — 모음 개수 세기
-8. `problems/00h_running_total.py` — 누적 합 계산하기
-9. `problems/00i_find_target_index.py` — 원하는 값의 첫 위치 찾기
-10. `problems/00j_unique_elements.py` — 중복 제거하기
-11. `problems/01_tree_min_depth.py` — 이진 트리의 최소 깊이
-12. `problems/02_level_order.py` — 이진 트리 레벨 순회
-13. `problems/03_combinations.py` — 조합 생성하기
-14. `problems/04_permutations.py` — 순열 생성하기
-15. `problems/05_target_sum.py` — 타겟 합 경우의 수
-16. `problems/06_graph_shortest_steps.py` — 그래프 최단 이동 횟수
-17. `problems/07_tree_path_sums.py` — 루트-리프 경로 합
-18. `problems/08_island_count.py` — 섬의 개수 세기
-19. `problems/09_max_region.py` — 최대 영역 넓이
-20. `problems/10_spread_time.py` — 메시지 전파 시간
-21. `problems/11_matrix_distance.py` — 가장 가까운 0까지 거리
-22. `problems/12_rotting_oranges.py` — 오렌지 썩는 시간
-23. `problems/13_maze_shortest_path.py` — 미로 최단 거리
-24. `problems/14_knight_moves.py` — 나이트 최소 이동
-25. `problems/15_all_paths.py` — DAG의 모든 경로
-26. `problems/16_maze_paths.py` — 미로 경로의 수
-27. `problems/17_word_search.py` — 격자에서 단어 찾기
-28. `problems/18_open_lock.py` — 자물쇠 최소 회전 횟수
-29. `problems/19_restore_ip.py` — 문자열에서 가능한 IP 주소 복원하기
-30. `problems/20_word_ladder.py` — 단어 사다리 최단 단계
-31. `problems/21_longest_bounded_sum.py` — 부분합이 제한된 가장 긴 구간 (슬라이딩 윈도우)
-32. `problems/22_prefix_sum_queries.py` — 2차원 구간합 질의 (누적합)
-33. `problems/23_classroom_scheduler.py` — 강의실 최소 개수 2 (우선순위 큐)
-34. `problems/24_min_palindrome_cut.py` — 최소 회문 분할 (DP)
-35. `problems/25_robot_collect_items.py` — 로봇의 체크포인트 수거 (BFS + 비트마스크 DP)
-36. `problems/26_fenwick_dynamic_range_sum.py` — 실시간 구간 합 질의 (펜윅 트리)
-37. `problems/27_longest_path_dag.py` — DAG에서 가장 긴 경로 (위상 정렬)
-38. `problems/28_kth_shortest_path.py` — K번째 최단 경로 (다익스트라 확장)
-39. `problems/29_partition_min_cost.py` — 배열 분할 최소 비용 (구간 DP)
-40. `problems/30_insecticide_double_spray.py` — 살충제 2회 살포 (시뮬레이션·누적합·비트마스크)
+1. `problems/01.py` — 입출력과 덧셈 익히기
+2. `problems/02.py` — 세 수 중 최댓값 찾기
+3. `problems/03.py` — 수열에서 짝수 세기
+4. `problems/04.py` — 인접 원소 최소 차이
+5. `problems/05.py` — 문자열 뒤집기
+6. `problems/06.py` — 팰린드롬 판별
+7. `problems/07.py` — 모음 개수 세기
+8. `problems/08.py` — 누적 합 계산하기
+9. `problems/09.py` — 원하는 값의 첫 위치 찾기
+10. `problems/10.py` — 중복 제거하기
+11. `problems/11.py` — 이진 트리의 최소 깊이
+12. `problems/12.py` — 이진 트리 레벨 순회
+13. `problems/13.py` — 조합 생성하기
+14. `problems/14.py` — 순열 생성하기
+15. `problems/15.py` — 타겟 합 경우의 수
+16. `problems/16.py` — 그래프 최단 이동 횟수
+17. `problems/17.py` — 루트-리프 경로 합
+18. `problems/18.py` — 섬의 개수 세기
+19. `problems/19.py` — 최대 영역 넓이
+20. `problems/20.py` — 메시지 전파 시간
+21. `problems/21.py` — 가장 가까운 0까지 거리
+22. `problems/22.py` — 오렌지 썩는 시간
+23. `problems/23.py` — 미로 최단 거리
+24. `problems/24.py` — 나이트 최소 이동
+25. `problems/25.py` — DAG의 모든 경로
+26. `problems/26.py` — 미로 경로의 수
+27. `problems/27.py` — 격자에서 단어 찾기
+28. `problems/28.py` — 자물쇠 최소 회전 횟수
+29. `problems/29.py` — 문자열에서 가능한 IP 주소 복원하기
+30. `problems/30.py` — 단어 사다리 최단 단계
+31. `problems/31.py` — 부분합이 제한된 가장 긴 구간 (슬라이딩 윈도우)
+32. `problems/32.py` — 2차원 구간합 질의 (누적합)
+33. `problems/33.py` — 강의실 최소 개수 2 (우선순위 큐)
+34. `problems/34.py` — 최소 회문 분할 (DP)
+35. `problems/35.py` — 로봇의 체크포인트 수거 (BFS + 비트마스크 DP)
+36. `problems/36.py` — 실시간 구간 합 질의 (펜윅 트리)
+37. `problems/37.py` — DAG에서 가장 긴 경로 (위상 정렬)
+38. `problems/38.py` — K번째 최단 경로 (다익스트라 확장)
+39. `problems/39.py` — 배열 분할 최소 비용 (구간 DP)
+40. `problems/40.py` — 살충제 2회 살포 (시뮬레이션·누적합·비트마스크)
