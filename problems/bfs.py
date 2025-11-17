@@ -22,35 +22,35 @@ def _load_module(filename: str) -> ModuleType:
     return module
 
 
-_tree_min_depth = _load_module("01_tree_min_depth.py")
+_tree_min_depth = _load_module("11.py")
 TreeNode = _tree_min_depth.TreeNode
 minimum_depth = _tree_min_depth.minimum_depth
 
-_level_order = _load_module("02_level_order.py")
+_level_order = _load_module("12.py")
 level_order_values = _level_order.level_order_values
 
-_graph_shortest_steps = _load_module("06_graph_shortest_steps.py")
+_graph_shortest_steps = _load_module("16.py")
 shortest_steps_from_start = _graph_shortest_steps.shortest_steps_from_start
 
-_matrix_distance = _load_module("11_matrix_distance.py")
+_matrix_distance = _load_module("21.py")
 nearest_zero_distance = _matrix_distance.nearest_zero_distance
 
-_maze_shortest_path = _load_module("13_maze_shortest_path.py")
+_maze_shortest_path = _load_module("23.py")
 shortest_path_in_maze = _maze_shortest_path.shortest_path_in_maze
 
-_knight_moves = _load_module("14_knight_moves.py")
+_knight_moves = _load_module("24.py")
 minimum_knight_moves = _knight_moves.minimum_knight_moves
 
-_spread_time = _load_module("10_spread_time.py")
+_spread_time = _load_module("20.py")
 spread_time = _spread_time.spread_time
 
-_rotting_oranges = _load_module("12_rotting_oranges.py")
+_rotting_oranges = _load_module("22.py")
 time_to_rot_all = _rotting_oranges.time_to_rot_all
 
-_open_lock = _load_module("18_open_lock.py")
+_open_lock = _load_module("28.py")
 minimum_turns_to_unlock = _open_lock.minimum_turns_to_unlock
 
-_word_ladder = _load_module("20_word_ladder.py")
+_word_ladder = _load_module("30.py")
 word_ladder_length = _word_ladder.word_ladder_length
 
 __all__ = [
